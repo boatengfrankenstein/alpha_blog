@@ -5,8 +5,15 @@ Rails.application.routes.draw do
   get 'welcome/about', to: 'welcome#about'
   get 'signup', to: 'users#new'
   post 'users',to:'users#create'
+  get 'signup',to: 'users#new'
+
 
 
   resources :articles
-  resources :users
+  resources :users,except:[:new]
+
+  get 'login', to:'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout',to: 'sessions#destroy'
+
 end
